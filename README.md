@@ -10,19 +10,47 @@ View the [**live example**](https://ssw-322.web.app/).
 
 1. Create a new project in the Firebase Console
 
-1. Install the [Firebase SDK](https://firebase.google.com/docs/web/setup)
-
-   > *Note*: specific installation instructions are provided by each example.
-
-1. [Add firebase](https://fireship.io/snippets/install-angularfire/) to your project
-
-1. Install the CLI *(Optional)*
+1. Install the CLI
 
    ```bash
    npm install -g firebase-tools
    ```
 
    > The CLI can be used later for deployment.
+
+1. Sign in to your firebase account with [`firebase-tools`](https://github.com/firebase/firebase-tools)
+
+   ```bash
+   firebase login
+   ```
+
+1. Install Angular
+
+   ```bash
+   npm install -g @angular/cli
+   ```
+
+1. Create a new Angular project
+
+   ```bash
+   ng new <my-new-app>
+   ```
+
+1. Add `@angular/fire`
+
+   ```bash 
+   ng add @angular/fire
+   ```
+
+1. [Add firebase](https://fireship.io/snippets/install-angularfire/) (api-keys/modules) to your project
+
+1. Use the [Angular CLI](https://angular.io/cli)
+
+   ```bash
+   ng serve
+   ng generate ...
+   ng build
+   ```
 
 ## Angular
 
