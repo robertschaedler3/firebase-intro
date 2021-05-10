@@ -16,10 +16,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
-
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-  declarations: [AppComponent, TodoComponent],
+  declarations: [AppComponent, TodoComponent, FileUploadComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -41,6 +42,7 @@ import { TodoComponent } from './todo/todo.component';
     MatInputModule,
     MatListModule,
     MatToolbarModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

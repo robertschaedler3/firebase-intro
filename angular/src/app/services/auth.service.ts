@@ -21,45 +21,19 @@ export interface User {
   providedIn: 'root',
 })
 export class AuthService {
-  user$: Observable<User | null | undefined>;
+  user$: Observable<firebase.User>;
 
-  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
-    this.user$ = this.afAuth.authState.pipe(
-      switchMap((user) => {
-        if (user) {
-          return this.afs.doc<User>(`user/${user.uid}`).valueChanges();
-        } else {
-          return of(null);
-        }
-      })
-    );
+  constructor(private afAuth: AngularFireAuth) {
+    this.user$ = this.afAuth.authState;
   }
 
-  async googleSignin(): Promise<void> {
+  async googleSignin(): Promise<any> {
     const provider = new firebase.auth.GoogleAuthProvider();
-    const credential = await this.afAuth.signInWithPopup(provider);
-    if (credential.user) {
-      this.updateUserData(credential.user as User);
-    }
+    return await this.afAuth.signInWithPopup(provider);
   }
 
   async signOut(): Promise<void> {
     return this.afAuth.signOut();
   }
 
-  private updateUserData({
-    uid,
-    displayName,
-    email,
-    photoURL,
-  }: User): Promise<void> {
-    const userRef: AngularFirestoreDocument<User> = this.afs.doc(`user/${uid}`);
-    const data = {
-      uid,
-      displayName,
-      email,
-      photoURL,
-    };
-    return userRef.set(data, { merge: true });
-  }
 }

@@ -19,18 +19,18 @@
 
     <mat-divider></mat-divider>
 
+    <router-outlet></router-outlet>
 
-    <app-todo [user]="user"></app-todo>
+    <!-- <app-todo [user]="user"></app-todo> -->
 
     <!-- <pre>{{user | json}}</pre> -->
   </div>
 
-  <ng-template #signIn>
+  <!-- <ng-template #signIn>
     <div fxLayout="column">
       <button mat-raised-button (click)="auth.googleSignin()">Sign In with Google</button>
     </div>
-  </ng-template>
+  </ng-template> -->
 
-  <!-- <router-outlet></router-outlet> -->
 
 </div>

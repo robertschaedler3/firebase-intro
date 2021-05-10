@@ -1,0 +1,32 @@
+<h2>Contribute</h2>
+<mat-divider></mat-divider>
+<div fxLayout="row">
+    <div fxLayout="column" fxFlex="50">
+        <form [formGroup]="form">
+
+            <mat-form-field>
+                <mat-label>Path</mat-label>
+                <input matInput formControlName="path">
+            </mat-form-field>
+
+            <div [formArrayName]="'fields'">
+                <div *ngFor="let field of fields.controls; let i = index" [formGroupName]="i">
+                    <mat-form-field>
+                        <input matInput placeholder="key" formControlName="key">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="value" formControlName="value">
+                    </mat-form-field>
+                    <button mat-raised-button (click)="remove(i)">Remove</button>
+                </div>
+                <button mat-raised-button (click)="add()">Add</button>
+            </div>
+
+        </form>
+
+        <button mat-raised-button (click)="submit()">Submit</button>
+    </div>
+    <div fxLayout="column" fxFlex="50">
+        <pre>{{document | json}}</pre>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<h2>Query</h2>
+<mat-divider></mat-divider>
+
+<div *ngIf="users$ | async as users">
+
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let user of users" (closed)="subCollection = {}">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{user.id}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{user.name}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="content">
+                <h3>User Object</h3>
+                <pre>{{user | json}}</pre>
+                <h3>Sub-collections</h3>
+                <mat-button-toggle-group [formControl]="formControl"
+                    (change)="querySubcollection($event.value, user.id)">
+                    <mat-button-toggle *ngFor="let collection of collections" [value]="collection">
+                        {{collection}}
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+                <pre>{{subCollection | json}}</pre>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+
+</div>
